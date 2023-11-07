@@ -5,7 +5,7 @@ const authenticateJWT = async (req, res, next) => {
   const header = req.headers.authorization;
 
   if (header && header.startsWith('Bearer ')) {
-    const token = header.slice(" ")[1];
+    const token = header.split(" ")[1];
     try {
       const {id} = jwt.verify(token, JWT_SECRET);
       req.user = {id};

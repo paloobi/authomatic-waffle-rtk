@@ -1,8 +1,13 @@
 const express = require('express');
 const prisma = require('../db/client');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+
+const {JWT_SECRET} = process.env;
+
+const {requireUser} = require('../auth');
 
 const router = express.Router();
-const {requireUser} = require('../auth');
 
 // GET /api/users/me
 router.get('/me', requireUser, async (req, res, next) => {
@@ -14,7 +19,7 @@ router.get('/me', requireUser, async (req, res, next) => {
         id: req.user.id
       }
     })
-    res.send({user});
+    res.send({...user, password: undefined});
   }
 });
 
@@ -51,7 +56,7 @@ router.post('/register', async (req, res, next) => {
     }
   });
 
-  if (!existingUser) {
+  if (existingUser) {
     res.status(403).send({name: "UserExists"});
   } else {
     const hashedPassword = await bcrypt.hash(password, 10);
