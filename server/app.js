@@ -1,6 +1,8 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+const { authenticateJWT } = require("./auth");
+
 const app = express();
 
 // Logging middleware
@@ -12,6 +14,8 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(path.join(__dirname, '../dist')))
 
+app.use(authenticateJWT);
+
 app.get("/test", (req, res, next) => {
   res.send("Test route");
 });
@@ -20,7 +24,7 @@ app.get('/', (req, res, next) => {
   res.sendFile(path.join(__dirname, '../dist/index.html'));
 })
 
-// TODO: Add your routers here
+app.use('/api', require('./api'));
 
 // Error handling middleware
 app.use((error, req, res, next) => {

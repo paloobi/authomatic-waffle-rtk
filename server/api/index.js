@@ -1,1 +1,7 @@
-// TODO: add API router here and all API sub-routers
+const express = require('express');
+
+const router = express.Router();
+
+router.use('/users', require('./users'));
+
+module.exports = router;
