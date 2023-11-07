@@ -1,4 +1,4 @@
-import { increment } from "../features/counter/counterSlice";
+import { increment } from "../features/counterSlice";
 import { useDispatch } from "react-redux";
 
 const CounterUpButton = () => {

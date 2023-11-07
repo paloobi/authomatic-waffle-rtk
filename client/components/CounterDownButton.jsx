@@ -1,4 +1,4 @@
-import { decrement } from "../features/counter/counterSlice";
+import { decrement } from "../features/counterSlice";
 import { useDispatch } from "react-redux";
 
 const CounterDownButton = () => {

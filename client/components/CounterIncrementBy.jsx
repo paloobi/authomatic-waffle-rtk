@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { incrementBy } from "../features/counter/counterSlice";
+import { incrementBy } from "../features/counterSlice";
 import { useDispatch } from "react-redux";
 
 const CounterIncrementBy = () => {

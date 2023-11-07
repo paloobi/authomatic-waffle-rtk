@@ -1,0 +1,20 @@
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+export const apiSlice = createApi({
+  reducerPath: "api",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:8080/api" }),
+  endpoints: (builder) => ({
+    register: builder.mutation({
+      query: ({ username, password }) => ({
+        url: "users/register",
+        method: "POST",
+        body: { username, password },
+      }),
+      invalidatesTags: ["CurrentUser"], // update any other place that provides CurrentUser tag
+    }),
+  }),
+});
+
+export const { useRegisterMutation } = apiSlice;
+
+export default apiSlice;
