@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import apiSlice from "./apiSlice";
+import api from "./api";
 
 const authSlice = createSlice({
   name: "auth",
@@ -13,7 +13,7 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder.addMatcher(
-      apiSlice.endpoints.register.matchFulfilled,
+      api.endpoints.register.matchFulfilled,
       (state, { payload }) => {
         state.token = payload.token;
       }

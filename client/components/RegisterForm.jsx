@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useRegisterMutation } from "../features/apiSlice";
+import { useRegisterMutation } from "../features/api";
 
 const RegisterForm = () => {
   const [register, { isLoading, isError, data }] = useRegisterMutation();
