@@ -1,12 +1,14 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+
 import RegisterForm from "./components/RegisterForm";
 import CounterUpButton from "./components/CounterUpButton";
 import CounterDownButton from "./components/CounterDownButton";
 import CounterIncrementBy from "./components/CounterIncrementBy";
 import CounterText from "./components/CounterText";
-import { useSelector } from "react-redux";
 import LoginForm from "./components/LoginForm";
 import UserInfo from "./components/UserInfo";
+import LogoutButton from "./components/LogoutButton";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -15,6 +17,7 @@ const App = () => {
 
   return (
     <div className="App">
+      {token && <LogoutButton />}
       {token && (
         <>
           <h1>Welcome!</h1>
