@@ -1,10 +1,11 @@
-const App = () => {
+import RegisterForm from "./components/RegisterForm";
 
-    return (
-      <div className="App">
-        Hello world!
-      </div>
-    );
-  }
-  
-  export default App;
+const App = () => {
+  return (
+    <div className="App">
+      <RegisterForm />
+    </div>
+  );
+};
+
+export default App;
