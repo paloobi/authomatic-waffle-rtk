@@ -6,6 +6,7 @@ import CounterIncrementBy from "./components/CounterIncrementBy";
 import CounterText from "./components/CounterText";
 import { useSelector } from "react-redux";
 import LoginForm from "./components/LoginForm";
+import UserInfo from "./components/UserInfo";
 
 const App = () => {
   const token = useSelector((state) => state.auth.token);
@@ -18,6 +19,7 @@ const App = () => {
         <>
           <h1>Welcome!</h1>
           <p>Thanks for creating an account!</p>
+          <UserInfo />
         </>
       )}
 
