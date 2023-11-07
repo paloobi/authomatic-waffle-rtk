@@ -18,6 +18,12 @@ const authSlice = createSlice({
         state.token = payload.token;
       }
     );
+    builder.addMatcher(
+      api.endpoints.login.matchFulfilled,
+      (state, { payload }) => {
+        state.token = payload.token;
+      }
+    );
   },
 });
 

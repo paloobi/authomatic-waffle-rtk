@@ -12,9 +12,17 @@ export const api = createApi({
       }),
       invalidatesTags: ["CurrentUser"], // update any other place that provides CurrentUser tag
     }),
+    login: builder.mutation({
+      query: ({ username, password }) => ({
+        url: "users/login",
+        method: "POST",
+        body: { username, password },
+      }),
+      invalidatesTags: ["CurrentUser"], // update any other place that provides CurrentUser tag
+    }),
   }),
 });
 
-export const { useRegisterMutation } = api;
+export const { useRegisterMutation, useLoginMutation } = api;
 
 export default api;
